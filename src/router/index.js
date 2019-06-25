@@ -13,6 +13,10 @@ export default new Router({
     movieRouter,
     mineRouter,
     cinemaRouter,
-    
+    //重定向
+    {
+      path:'/*',
+      component: ()=> import('@/views/Movie')
+    }
   ]
 })
