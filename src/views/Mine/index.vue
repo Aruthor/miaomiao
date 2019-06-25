@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <movieHead title="我的设置"/>
+    <movieHead title="奇趣设置"/>
     <movieTabBar/>
   </div>
 </template>
