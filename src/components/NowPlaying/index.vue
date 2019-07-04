@@ -2,7 +2,7 @@
   <div class="movie_body" ref="movie_body">
     <ul>
       <li>
-        <div class="pic_show"><img src="/images/movie_1.jpg"></div>
+        <div class="pic_show"><img src="/static/images/movie_1.jpg"></div>
           <div class="info_list">
             <h2>无名之辈</h2>
             <p>观众评 <span class="grade">9.2</span></p>
@@ -12,7 +12,7 @@
         <div class="btn_mall">购票</div>
       </li>
       <li>
-        <div class="pic_show"><img src="/images/movie_1.jpg"></div>
+        <div class="pic_show"><img src="/static/images/movie_1.jpg"></div>
           <div class="info_list">
             <h2>胆小之辈</h2>
             <p>观众评 <span class="grade">7.2</span></p>
@@ -22,7 +22,7 @@
         <div class="btn_mall">购票</div>
       </li>
       <li>
-        <div class="pic_show"><img src="/images/movie_1.jpg"></div>
+        <div class="pic_show"><img src="/static/images/movie_1.jpg"></div>
           <div class="info_list">
             <h2>胆小之辈</h2>
             <p>观众评 <span class="grade">7.2</span></p>
@@ -32,7 +32,7 @@
         <div class="btn_mall">购票</div>
       </li>
       <li>
-        <div class="pic_show"><img src="/images/movie_1.jpg"></div>
+        <div class="pic_show"><img src="/static/images/movie_1.jpg"></div>
           <div class="info_list">
             <h2>胆小之辈</h2>
             <p>观众评 <span class="grade">7.2</span></p>
@@ -42,7 +42,7 @@
         <div class="btn_mall">购票</div>
       </li>
       <li>
-        <div class="pic_show"><img src="/images/movie_1.jpg"></div>
+        <div class="pic_show"><img src="/static/images/movie_1.jpg"></div>
           <div class="info_list">
             <h2>胆小之辈</h2>
             <p>观众评 <span class="grade">7.2</span></p>
@@ -52,7 +52,7 @@
         <div class="btn_mall">购票</div>
       </li>
       <li>
-        <div class="pic_show"><img src="/images/movie_1.jpg"></div>
+        <div class="pic_show"><img src="/static/images/movie_1.jpg"></div>
           <div class="info_list">
             <h2>胆小之辈</h2>
             <p>观众评 <span class="grade">7.2</span></p>
@@ -62,7 +62,7 @@
         <div class="btn_mall">购票</div>
       </li>
       <li>
-        <div class="pic_show"><img src="/images/movie_1.jpg"></div>
+        <div class="pic_show"><img src="/static/images/movie_1.jpg"></div>
           <div class="info_list">
             <h2>胆小之辈</h2>
             <p>观众评 <span class="grade">7.2</span></p>
@@ -72,7 +72,7 @@
         <div class="btn_mall">购票</div>
       </li>
       <li>
-        <div class="pic_show"><img src="/images/movie_1.jpg"></div>
+        <div class="pic_show"><img src="/static/images/movie_1.jpg"></div>
           <div class="info_list">
             <h2>胆小之辈</h2>
             <p>观众评 <span class="grade">7.2</span></p>
@@ -96,7 +96,7 @@ export default {
  }
 </script>
 
-<style lang="" scoped>
+<style scoped>
 .movie_body{ flex:1; overflow:auto;}
 .movie_body ul{ margin:0 12px; overflow: hidden;}
 .movie_body ul li{ margin-top:12px; display: flex; align-items:center; border-bottom: 1px #e6e6e6 solid; padding-bottom: 10px;}

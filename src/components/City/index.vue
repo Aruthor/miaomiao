@@ -5,6 +5,13 @@
         <h2>热门城市</h2>
         <ul class="clearfix">
           <li>上海</li>
+          <li>北京</li>
+					<li>上海</li>
+					<li>北京</li>
+					<li>上海</li>
+					<li>北京</li>
+					<li>上海</li>
+					<li>北京</li>
         </ul>
       </div>
       <div class="city_sort">
@@ -17,6 +24,16 @@
             <li>安阳</li>
           </ul>
         </div>
+        <div>
+					<h2>B</h2>
+					<ul>
+						<li>北京</li>
+						<li>保定</li>
+						<li>蚌埠</li>
+						<li>包头</li>
+					</ul>
+				</div>
+
       </div>
     </div>
     <div class="city_index">
@@ -41,7 +58,7 @@ export default {
 </script>
 
 <style lang="" scoped>
-.city_body{ margin-top: 45px; display: flex; width:100%; position: absolute; top: 0; bottom: 0;}
+.city_body{ margin-top: 51px; display: flex; width:100%; position: absolute; top: 0; bottom: 0;}
 .city_body .city_list{ flex:1; overflow: auto; background: #FFF5F0;}
 .city_body .city_list::-webkit-scrollbar{ background-color:transparent;width:0;}
 .city_body .city_hot{ margin-top: 20px;}

@@ -11,7 +11,7 @@
       <ul>
         <li>
           <div class="img">
-            <img src="/images/movie_1.jpg">
+            <img src="/static/images/movie_1.jpg">
           </div>
           <div class="info">
             <p>
