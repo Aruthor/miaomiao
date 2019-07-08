@@ -5,6 +5,16 @@ import App from './App'
 import router from './router'
 import store from './stores'
 
+import axios from 'axios'
+Vue.prototype.$ajax = axios; //设置到vue的属性里
+
+
+//过滤器
+Vue.filter('setWH',(url , arg) => {
+  return url.replace( /w\.h/ , arg)
+})
+
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

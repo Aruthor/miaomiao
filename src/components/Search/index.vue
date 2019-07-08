@@ -9,18 +9,18 @@
     <div class="search_result">
       <h3>电影/电视剧/综艺</h3>
       <ul>
-        <li>
+        <li v-for="item in movieList" :key="item.id">
           <div class="img">
-            <img src="/static/images/movie_1.jpg">
+            <img :src="item.img | setWH('128.180')">
           </div>
           <div class="info">
             <p>
-              <span>无名之辈</span>
-              <span>8.5</span>
+              <span>{{item.nm}}</span>
+              <span>{{item.sc}}</span>
             </p>
-            <p>A Cool Fish</p>
-            <p>剧情,喜剧,犯罪</p>
-            <p>2018-11-16</p>
+            <p>{{item.enm}}</p>
+            <p>{{item.cat}}</p>
+            <p>{{item.rt}}</p>
           </div>
         </li>
       </ul>
@@ -32,7 +32,42 @@
 export default {
   name: "Search",
   data() {
-    return {};
+    return {
+      message:'',
+      movieList:[]
+    };
+  },
+  methods:{
+    cancelRequest(){
+      if(typeof this.source ==='function'){
+        this.source('终止请求')
+      }
+    }
+  },
+  watch:{
+    message(newVal){
+      var that = this;
+      this.cancelRequest();
+
+      if(newVal){
+        this.$ajax.get('/api/searchList?cityId=10&kw='+newVal,{
+          //axios的防抖
+          cancelToken : new this.$ajax.CancelToken((c)=>{
+            that.source = c;
+          })
+        }).then((res)=>{
+          var movies = res.data.data.movies;
+          if(movies){
+            this.movieList = res.data.data.movies.list
+          }
+        }).catch((err)=>{
+          this.$ajax.isCancel(err)?console.log('Rquest canceled', err.message) : console.log(err)
+        })
+      }else{
+        this.movieList = []
+      }
+      
+    }
   }
 };
 </script>

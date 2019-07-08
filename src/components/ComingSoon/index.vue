@@ -1,17 +1,17 @@
 <template>
   <div class="movie_body">
     <ul>
-      <li>
+      <li v-for="item in comingList" :key="item.id">
         <div class="pic_show">
-          <img src="/static/images/movie_1.jpg">
+          <img :src="item.img | setWH('128.180')">
         </div>
         <div class="info_list">
-          <h2>无名之辈</h2>
+          <h2>{{item.nm}} <img src="/static/images/maxs.png" v-if="item.version"/></h2>
           <p>
-            <span class="person">17746</span> 人想看
+            <span class="person">{{item.wish}}</span> 人想看
           </p>
-          <p>主演: 陈建斌,任素汐,潘斌龙</p>
-          <p>2018-11-30上映</p>
+          <p>{{item.star}}</p>
+          <p>{{item.rt}}上映</p>
         </div>
         <div class="btn_pre">预售</div>
       </li>
@@ -23,7 +23,14 @@
 export default {
   name: "CoiingSoon",
   data() {
-    return {};
+    return {
+      comingList:""
+    };
+  },
+  mounted(){
+    this.$ajax.get('/api/movieComingList?cityId=10').then((res)=>{
+      this.comingList = res.data.data.comingList
+    })
   }
 };
 </script>
