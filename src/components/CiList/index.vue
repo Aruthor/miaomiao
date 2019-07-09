@@ -1,6 +1,8 @@
 <template>
   <div class="cinema_body">
-    <ul>
+    <Loading v-if="isLoading"/>
+    <!-- <Scroller></Scroller> -->
+    <ul v-else>
       <li v-for="item in cinemasList" :key="item.id">
         <div>
           <span>{{item.nm}}</span>
@@ -27,12 +29,14 @@ export default {
   name: "ciList",
   data() {
     return {
-      cinemasList: []
+      cinemasList: [],
+      isLoading:true
     };
   },
   mounted() {
     this.$ajax.get("/api/cinemaList?cityId=10").then(res => {
       this.cinemasList = res.data.data.cinemas;
+      this.isLoading = false;
     });
   },
   computed: {

@@ -1,6 +1,7 @@
 <template>
   <div class="movie_body">
-    <Scroller :heanleToScroll="heanleToScroll" :handleTouchEnd="handleTouchEnd">
+    <Loading v-if="isLoading"/>
+    <Scroller v-else :heanleToScroll="heanleToScroll" :handleTouchEnd="handleTouchEnd">
       <ul>
         <li>{{pullDownMsg}}</li>
         <li v-for="item in comingList" :key="item.id">
@@ -28,12 +29,14 @@ export default {
   data() {
     return {
       comingList:[],
-      pullDownMsg: ""
+      pullDownMsg: "",
+      isLoading:true
     };
   },
   mounted(){
     this.$ajax.get('/api/movieComingList?cityId=10').then((res)=>{
-      this.comingList = res.data.data.comingList
+      this.comingList = res.data.data.comingList;
+      this.isLoading = false;
     })
   },
   methods:{

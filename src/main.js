@@ -9,7 +9,10 @@ import axios from 'axios'
 Vue.prototype.$ajax = axios; //设置到vue的属性里
 
 import Scroller from '@/components/Scroller'
+import Loading from '@/components/Loading'
+
 Vue.component('Scroller',Scroller)
+Vue.component('Loading',Loading)
 
 //过滤器
 Vue.filter('setWH',(url , arg) => {
