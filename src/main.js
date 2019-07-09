@@ -8,6 +8,8 @@ import store from './stores'
 import axios from 'axios'
 Vue.prototype.$ajax = axios; //设置到vue的属性里
 
+import Scroller from '@/components/Scroller'
+Vue.component('Scroller',Scroller)
 
 //过滤器
 Vue.filter('setWH',(url , arg) => {

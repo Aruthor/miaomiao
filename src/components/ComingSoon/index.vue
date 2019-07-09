@@ -1,21 +1,24 @@
 <template>
   <div class="movie_body">
-    <ul>
-      <li v-for="item in comingList" :key="item.id">
-        <div class="pic_show">
-          <img :src="item.img | setWH('128.180')">
-        </div>
-        <div class="info_list">
-          <h2>{{item.nm}} <img src="/static/images/maxs.png" v-if="item.version"/></h2>
-          <p>
-            <span class="person">{{item.wish}}</span> 人想看
-          </p>
-          <p>{{item.star}}</p>
-          <p>{{item.rt}}上映</p>
-        </div>
-        <div class="btn_pre">预售</div>
-      </li>
-    </ul>
+    <Scroller :heanleToScroll="heanleToScroll" :handleTouchEnd="handleTouchEnd">
+      <ul>
+        <li>{{pullDownMsg}}</li>
+        <li v-for="item in comingList" :key="item.id">
+          <div class="pic_show">
+            <img :src="item.img | setWH('128.180')">
+          </div>
+          <div class="info_list">
+            <h2>{{item.nm}} <img src="/static/images/maxs.png" v-if="item.version"/></h2>
+            <p>
+              <span class="person">{{item.wish}}</span> 人想看
+            </p>
+            <p>{{item.star}}</p>
+            <p>{{item.rt}}上映</p>
+          </div>
+          <div class="btn_pre">预售</div>
+        </li>
+      </ul>
+    </Scroller>
   </div>
 </template>
 
@@ -24,14 +27,34 @@ export default {
   name: "CoiingSoon",
   data() {
     return {
-      comingList:""
+      comingList:[],
+      pullDownMsg: ""
     };
   },
   mounted(){
     this.$ajax.get('/api/movieComingList?cityId=10').then((res)=>{
       this.comingList = res.data.data.comingList
     })
+  },
+  methods:{
+    heanleToScroll(pos) {
+      if (pos.y > 30) {
+        this.pullDownMsg = "正在更新中...";
+      }
+    },
+    handleTouchEnd(pos) {
+      if (pos.y > 30) {
+        this.$ajax.get("/api/movieOnInfoList?cityId=11").then(res => {
+          this.pullDownMsg = "更新成功";
+          setTimeout(() => {
+            this.movieList = res.data.data.movieList;
+            this.pullDownMsg = "";
+          }, 1000);
+        });
+      }
+    }
   }
+  
 };
 </script>
 
