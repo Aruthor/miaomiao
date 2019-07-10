@@ -27,6 +27,7 @@
 <script>
 import movieHead from "@/components/Header";
 import movieTabBar from "@/components/TabBar";
+import { messageBox } from '@/components/JS';
 
 export default {
   name: "Movie",
@@ -36,6 +37,27 @@ export default {
   },
   data() {
     return {};
+  },
+  mounted(){
+    let timer=setTimeout(()=>{
+      this.$ajax.get('/api/getLocation').then((res)=>{
+        let nm = res.data.data.nm;
+        let id = res.data.data.id;
+   
+        if(this.$store.state.city.id == id){return}
+        messageBox({
+          title:'定位',
+          content:nm,
+          cancel:'取消',
+          ok:'切换定位',
+          handleOk(){
+            window.localStorage.setItem('nowNm',nm);
+            window.localStorage.setItem('nowId',id);
+            window.location.reload();
+          }
+        })
+      })
+    },3000)
   }
 };
 </script>
