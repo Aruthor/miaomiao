@@ -16,9 +16,9 @@
           <i class="iconfont icon-lower-triangle"></i>
         </div>
       </div>
+      <ciList />
     </div>
     <movieTabBar />
-    <ciList />
   </div>
 </template>
 

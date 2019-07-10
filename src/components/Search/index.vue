@@ -48,9 +48,10 @@ export default {
     message(newVal){
       var that = this;
       this.cancelRequest();
+      let cityId = this.$store.state.city.id;
 
       if(newVal){
-        this.$ajax.get('/api/searchList?cityId=10&kw='+newVal,{
+        this.$ajax.get('/api/searchList?cityId='+cityId+'&kw='+newVal,{
           //axios的防抖
           cancelToken : new this.$ajax.CancelToken((c)=>{
             that.source = c;

@@ -30,13 +30,20 @@ export default {
     return {
       comingList:[],
       pullDownMsg: "",
-      isLoading:true
+      isLoading:true,
+      prevCityId:-1
     };
   },
-  mounted(){
-    this.$ajax.get('/api/movieComingList?cityId=10').then((res)=>{
+  activated(){
+    this.isLoading = true;
+    //这个生命周在keep-alive下才会执行，这里需要将其进行判断，如果在当前位置就不发起请求，否则就会
+    let cityId = this.$store.state.city.id;
+    if(this.prevCityId === cityId){return}
+
+    this.$ajax.get('/api/movieComingList?cityId='+cityId).then((res)=>{
       this.comingList = res.data.data.comingList;
       this.isLoading = false;
+      this.prevCityId = cityId;
     })
   },
   methods:{
