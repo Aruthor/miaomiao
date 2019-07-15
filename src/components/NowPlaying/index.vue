@@ -5,11 +5,11 @@
       <ul>
         <li>{{pullDownMsg}}</li>
         <li v-for="item in movieList" :key="item.id">
-          <div class="pic_show" @tap="handleToDetail">
+          <div class="pic_show" @tap="handleToDetail(item.id)">
             <img :src="item.img | setWH('128.180')" />
           </div>
           <div class="info_list">
-            <h2>
+            <h2 @tag="handleToDetail(item.id)">
               {{item.nm}}
               <img src="/static/images/maxs.png" v-if="item.version" />
             </h2>
@@ -51,8 +51,8 @@ export default {
     });
   },
   methods: {
-    handleToDetail() {
-      console.log(1111);
+    handleToDetail(movieId) {
+      this.$router.push('/movie/detail/1/'+movieId)
     },
     heanleToScroll(pos) {
       if (pos.y > 30) {

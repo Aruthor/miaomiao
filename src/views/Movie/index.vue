@@ -16,11 +16,12 @@
         </router-link>
       </div>
     </div>
-    <!--子级渲染(单点渲染)-->
+    <!-- 子级渲染(单点渲染) -->
     <keep-alive>
       <router-view />
     </keep-alive>
     <movieTabBar />
+    <router-view name="detail"></router-view>
   </div>
 </template>
 
@@ -76,4 +77,13 @@ export default {
 .movie_menu .search_entry.router-link-active{ color: #ef4238; border-bottom: 2px #ef4238 solid;}
 .movie_menu .search_entry i{  font-size:24px; color:red;}
 
+.slide-enter-active{ animation : 13s detailMove;}
+@keyframes detailMove{
+	0%{
+		transform : translateX(100%);
+	}
+	100%{
+		transform : translateX(0);
+	}
+}
 </style>

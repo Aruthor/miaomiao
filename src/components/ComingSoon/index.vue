@@ -5,10 +5,10 @@
       <ul>
         <li>{{pullDownMsg}}</li>
         <li v-for="item in comingList" :key="item.id">
-          <div class="pic_show">
+          <div class="pic_show" @tap="handleToDetail(item.id)">
             <img :src="item.img | setWH('128.180')">
           </div>
-          <div class="info_list">
+          <div class="info_list" @tap="handleToDetail(item.id)">
             <h2>{{item.nm}} <img src="/static/images/maxs.png" v-if="item.version"/></h2>
             <p>
               <span class="person">{{item.wish}}</span> 人想看
@@ -47,6 +47,9 @@ export default {
     })
   },
   methods:{
+    handleToDetail(movieId) {
+      this.$router.push('/movie/detail/2/'+movieId)
+    },
     heanleToScroll(pos) {
       if (pos.y > 30) {
         this.pullDownMsg = "正在更新中...";
